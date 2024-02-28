@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CannonControl : MonoBehaviour
+public class ControlCannon : MonoBehaviour
 {
     [SerializeField] private Transform _cannonCart;
     [SerializeField] private Transform _cannonBarrel;
@@ -13,11 +14,12 @@ public class CannonControl : MonoBehaviour
     [SerializeField] private float _forceSensitivity;
     [SerializeField] private GameObject _cannonBall;
     [SerializeField] private float forceCap;
+    [SerializeField] private float minForce;
     private bool _leftTouch = false;
-    private int leftTouchIndex;
+    private int leftTouchId;
 
     private bool _rightTouch = false;
-    private int rightTouchIndex;
+    private int rightTouchId;
 
     private float _fireStrenght;
     // Update is called once per frame
@@ -30,50 +32,52 @@ public class CannonControl : MonoBehaviour
         {
             if (touches[i].phase == TouchPhase.Began && !_leftTouch && touches[i].position.x < Display.main.systemWidth / 2)
             {
-                leftTouchIndex = i;
+                leftTouchId = touches[i].fingerId;
                 _leftTouch = true;
                 Debug.Log(_leftTouch);
             }
 
             if (touches[i].phase == TouchPhase.Began && !_rightTouch && touches[i].position.x > Display.main.systemWidth / 2)
             {
-                rightTouchIndex = i;
+                rightTouchId = i;
                 _rightTouch = true;
                 Debug.Log(_rightTouch);
             }
         }
-
+        Touch leftTouch = Array.Find(touches, x => x.fingerId == leftTouchId);
+        Touch rightTouch = Array.Find(touches, x => x.fingerId == rightTouchId);
         //Debug.Log(leftTouch.fingerId);
-        if (Input.touchCount > 0 && touches[leftTouchIndex].phase == TouchPhase.Ended && _leftTouch)
+        if (Input.touchCount > 0 && _leftTouch && leftTouch.phase == TouchPhase.Ended)
         {
             _leftTouch = false;
             Debug.Log(_leftTouch);
             //leftTouchIndex = -1;
         }
 
-        if (Input.touchCount > 0 && touches[rightTouchIndex].phase == TouchPhase.Ended && _rightTouch)
+        if (Input.touchCount > 0 && _rightTouch && rightTouch.phase == TouchPhase.Ended)
         {
             _rightTouch = false;
             Debug.Log(_rightTouch);
+            if(_fireStrenght > minForce) 
             FireCannon(_fireStrenght);
             _fireStrenght = 0;
             //rightTouchIndex = -1;
         }
         if (_leftTouch)
         {
-            //if (_cannonBarrel.eulerAngles.z <= 0 && _cannonBarrel.eulerAngles.z >= -90)
-            _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -touches[leftTouchIndex].deltaPosition.y * _sensitivityY + _cannonBarrel.eulerAngles.z);
-            // else if (_cannonBarrel.eulerAngles.z > 0)
-            //_cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 0);
-            //else if (_cannonBarrel.eulerAngles.z < -90)
-            //_cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -90);
-
-            _cannonCart.eulerAngles = new Vector3(_cannonCart.eulerAngles.x, touches[leftTouchIndex].deltaPosition.x * _sensitivityX + _cannonCart.eulerAngles.y, _cannonCart.eulerAngles.z);
+            Debug.Log(_cannonBarrel.eulerAngles.z);
+            //if (_cannonBarrel.eulerAngles.z <= 358 && _cannonBarrel.eulerAngles.z >= 270)
+            _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -leftTouch.deltaPosition.y * _sensitivityY + _cannonBarrel.eulerAngles.z);
+            //if (_cannonBarrel.eulerAngles.z > 358)
+               // _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 358);
+           // else if (_cannonBarrel.eulerAngles.z < 270)
+               // _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 270);
+            _cannonCart.eulerAngles = new Vector3(_cannonCart.eulerAngles.x, leftTouch.deltaPosition.x * _sensitivityX + _cannonCart.eulerAngles.y, _cannonCart.eulerAngles.z);
         }
 
         if (_rightTouch)
         {
-            _fireStrenght -= touches[rightTouchIndex].deltaPosition.y * _forceSensitivity;
+            _fireStrenght -= rightTouch.deltaPosition.y * _forceSensitivity;
             if (_fireStrenght < 0)
                 _fireStrenght = 0;
             else if (_fireStrenght > forceCap)
