@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string text = "Screen Resolution: " + Display.main.renderingWidth + " x " + Display.main.renderingHeight;
+        string text = "Touches on screen: " + Input.touchCount;
         screenRes.text = text;
     }
 }
