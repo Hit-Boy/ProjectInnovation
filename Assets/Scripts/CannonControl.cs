@@ -58,20 +58,20 @@ public class ControlCannon : MonoBehaviour
         {
             _rightTouch = false;
             Debug.Log(_rightTouch);
-            if(_fireStrenght > minForce) 
-            FireCannon(_fireStrenght);
+            if (_fireStrenght > minForce)
+                FireCannon(_fireStrenght);
             _fireStrenght = 0;
             //rightTouchIndex = -1;
         }
         if (_leftTouch)
         {
             Debug.Log(_cannonBarrel.eulerAngles.z);
-            //if (_cannonBarrel.eulerAngles.z <= 358 && _cannonBarrel.eulerAngles.z >= 270)
-            _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -leftTouch.deltaPosition.y * _sensitivityY + _cannonBarrel.eulerAngles.z);
-            //if (_cannonBarrel.eulerAngles.z > 358)
-               // _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 358);
-           // else if (_cannonBarrel.eulerAngles.z < 270)
-               // _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 270);
+           if (_cannonBarrel.eulerAngles.z >= 90 && _cannonBarrel.eulerAngles.z <= 200)
+                _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -leftTouch.deltaPosition.y * _sensitivityY + _cannonBarrel.eulerAngles.z);
+            if (_cannonBarrel.eulerAngles.z < 90)
+                _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 90);
+            else if (_cannonBarrel.eulerAngles.z > 200)
+                _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 200);
             _cannonCart.eulerAngles = new Vector3(_cannonCart.eulerAngles.x, leftTouch.deltaPosition.x * _sensitivityX + _cannonCart.eulerAngles.y, _cannonCart.eulerAngles.z);
         }
 
