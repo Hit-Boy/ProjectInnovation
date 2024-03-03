@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,8 +14,16 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private float _sensitivityY;
     [SerializeField] private float _forceSensitivity;
     [SerializeField] private GameObject _cannonBall;
-    [SerializeField] private float forceCap;
+    [SerializeField] private float maxForce;
     [SerializeField] private float minForce;
+
+    public float MaximumForce {
+        get {return maxForce;}
+    }
+
+        public float MinimumForce {
+        get {return minForce;}
+    }
     private bool _leftTouch = false;
     private int leftTouchId;
 
@@ -80,8 +89,8 @@ public class ControlCannon : MonoBehaviour
             _fireStrenght -= rightTouch.deltaPosition.y * _forceSensitivity;
             if (_fireStrenght < 0)
                 _fireStrenght = 0;
-            else if (_fireStrenght > forceCap)
-                _fireStrenght = forceCap;
+            else if (_fireStrenght > maxForce)
+                _fireStrenght = maxForce;
             Debug.Log(_fireStrenght);
 
         }
