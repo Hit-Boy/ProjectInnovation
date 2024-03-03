@@ -1295,7 +1295,51 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.4300003
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 3024608406928824590, guid: 5ea3ffcb7f79c7f4b8fc53f094ec0582,
+=======
+    - target: {fileID: 4813872989787265280, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437604687432199214, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: forceCap
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545128535919218406, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626384184373942333, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809380462677589838, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398162785911353185, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768326635077734755, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097718031266937047, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563358439962910854, guid: 0064cfbd8e45e064aaa10626fcb9d8fc,
+>>>>>>> Stashed changes
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
