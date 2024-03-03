@@ -1,8 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ControlCannon : MonoBehaviour
@@ -10,6 +6,7 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private Transform _cannonCart;
     [SerializeField] private Transform _cannonBarrel;
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private Transform _gyroTransform;
     [SerializeField] private float _sensitivityX;
     [SerializeField] private float _sensitivityY;
     [SerializeField] private float _forceSensitivity;
@@ -31,7 +28,15 @@ public class ControlCannon : MonoBehaviour
     private int rightTouchId;
 
     private float _fireStrenght;
+    public float FireForce
+    {
+        get{return _fireStrenght;}
+    }
     // Update is called once per frame
+    void Start()
+    {
+         _gyroTransform.eulerAngles = new Vector3(_gyroTransform.eulerAngles.x, _cannonCart.eulerAngles.y, _cannonBarrel.eulerAngles.z);
+    }
     void Update()
     {
         //Debug.Log(Display.main.systemWidth);
@@ -82,6 +87,7 @@ public class ControlCannon : MonoBehaviour
             else if (_cannonBarrel.eulerAngles.z > 200)
                 _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 200);
             _cannonCart.eulerAngles = new Vector3(_cannonCart.eulerAngles.x, leftTouch.deltaPosition.x * _sensitivityX + _cannonCart.eulerAngles.y, _cannonCart.eulerAngles.z);
+            _gyroTransform.eulerAngles = new Vector3(_gyroTransform.eulerAngles.x, _cannonCart.eulerAngles.y, _cannonBarrel.eulerAngles.z);
         }
 
         if (_rightTouch)

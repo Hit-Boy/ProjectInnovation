@@ -17,6 +17,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //slider.value = 
+        slider.value = controlCannon.FireForce > slider.minValue ?  controlCannon.FireForce : slider.minValue;
     }
 }
