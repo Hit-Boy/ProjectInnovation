@@ -12,7 +12,6 @@ public class Break : MonoBehaviour
         foreach (Rigidbody rb in rbs) { 
             rb.isKinematic = true;
         }
-        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     // Update is called once per frame
