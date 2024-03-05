@@ -393,7 +393,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83c3a07f30a26704e9305478981d5f4b,
         type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 7004734248981488275}
+=======
+      addedObject: {fileID: 6546113378113949062}
+>>>>>>> Stashed changes
     - targetCorrespondingSourceObject: {fileID: -8853652285130610270, guid: 83c3a07f30a26704e9305478981d5f4b,
         type: 3}
       insertIndex: -1
@@ -1910,8 +1914,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Size: {x: 10.4, y: 5.4, z: 5.6}
+  m_Center: {x: 0, y: 2.55, z: 0}
 --- !u!114 &855449168995462953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dccd05b9704bd44f9a835c7c84868c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!54 &7004734248981488275
+=======
+--- !u!54 &6546113378113949062
+>>>>>>> Stashed changes
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1932,8 +1940,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6277092586899184973}
   serializedVersion: 4
+<<<<<<< Updated upstream
   m_Mass: 25
   m_Drag: 2
+=======
+  m_Mass: 20
+  m_Drag: 0
+>>>>>>> Stashed changes
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
