@@ -33,8 +33,138 @@ Transform:
   - {fileID: 1023428229506494575}
   - {fileID: 8225320645713879072}
   - {fileID: 3910069158544749342}
+  - {fileID: 4768845217124273372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &105295115840386179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4768845217124273372}
+  - component: {fileID: 5939756599501536266}
+  - component: {fileID: 6695850273417094563}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4768845217124273372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105295115840386179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: -18.3, z: -118.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 788156195448879785}
+  m_Father: {fileID: 5845130061357618339}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!20 &5939756599501536266
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105295115840386179}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: f179d65d68a2f1942a19cd886488dbe0, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &6695850273417094563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105295115840386179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &482630787728494485
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2779672800938703346}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cannon_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +216,7 @@ GameObject:
   - component: {fileID: 6742291587798991566}
   - component: {fileID: 5530059087767025644}
   - component: {fileID: 1113075207264258130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +299,7 @@ GameObject:
   - component: {fileID: 2746977776420335605}
   - component: {fileID: 7211931957481398241}
   - component: {fileID: 8861527183337251368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +405,7 @@ RectTransform:
   m_Children:
   - {fileID: 3679684966124701131}
   - {fileID: 4690322090818165839}
-  - {fileID: 788156195448879785}
+  - {fileID: 8092559354193290223}
   m_Father: {fileID: 5845130061357618339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -370,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6632682919985172582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +533,7 @@ GameObject:
   - component: {fileID: 8569601067036447468}
   - component: {fileID: 3766135189673452222}
   - component: {fileID: 5823865282307484954}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +793,7 @@ GameObject:
   - component: {fileID: 2845536445856845623}
   - component: {fileID: 7001142478684781273}
   - component: {fileID: 6040706468341222397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,23 +874,24 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719274624463951441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'CannonMesh '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &719274624463951441
-RectTransform:
+--- !u!4 &719274624463951441
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588340384277080311}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2779672800938703346}
@@ -768,11 +899,6 @@ RectTransform:
   - {fileID: 2201798473125380178}
   m_Father: {fileID: 788156195448879785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2363800943410461506
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +1087,7 @@ GameObject:
   - component: {fileID: 3874534193249843944}
   - component: {fileID: 6252775033639842363}
   - component: {fileID: 2968452096021669120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,7 +1243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2201798473125380178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8967760573104831275}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pLANKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1318,7 @@ GameObject:
   - component: {fileID: 938551486555914723}
   - component: {fileID: 891030930115117569}
   - component: {fileID: 5179509008799193734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1275,7 +1401,7 @@ GameObject:
   - component: {fileID: 772913000516881975}
   - component: {fileID: 2045862714032621349}
   - component: {fileID: 5539257729705032852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1559,7 @@ GameObject:
   - component: {fileID: 3334305706104199035}
   - component: {fileID: 6794245833027771349}
   - component: {fileID: 8224584394895923998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,33 +1640,29 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 788156195448879785}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Gyro Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &788156195448879785
-RectTransform:
+--- !u!4 &788156195448879785
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4214451324451950700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.5, z: 1536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 719274624463951441}
-  m_Father: {fileID: 3910069158544749342}
+  m_Father: {fileID: 4768845217124273372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -850, y: -450}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4350271483628902305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1674,7 @@ GameObject:
   - component: {fileID: 8769370970273845137}
   - component: {fileID: 3815767938310833881}
   - component: {fileID: 9045160258009264754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1757,7 @@ GameObject:
   - component: {fileID: 4101250554787811896}
   - component: {fileID: 3023015480044786639}
   - component: {fileID: 1303873569364528115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1718,7 +1840,7 @@ GameObject:
   - component: {fileID: 3368287428650132693}
   - component: {fileID: 462481149366324144}
   - component: {fileID: 8454245874824838631}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1959,7 @@ GameObject:
   - component: {fileID: 6239424503711006}
   - component: {fileID: 296769069832290835}
   - component: {fileID: 4206346921587477789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1920,7 +2042,7 @@ GameObject:
   - component: {fileID: 4324816788074176382}
   - component: {fileID: 7242851660853618228}
   - component: {fileID: 880166159947968994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2003,7 +2125,7 @@ GameObject:
   - component: {fileID: 5586808809129620965}
   - component: {fileID: 3374958617952026743}
   - component: {fileID: 6738483922018037668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2086,7 +2208,7 @@ GameObject:
   - component: {fileID: 4048173806266889678}
   - component: {fileID: 5624439569177997445}
   - component: {fileID: 6729039292197649842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2291,7 @@ GameObject:
   - component: {fileID: 1852097324682530632}
   - component: {fileID: 3335869471540519231}
   - component: {fileID: 3660873806695517514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2252,7 +2374,7 @@ GameObject:
   - component: {fileID: 7027964776390997675}
   - component: {fileID: 6803740394995489358}
   - component: {fileID: 5206251369187258052}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2335,7 +2457,7 @@ GameObject:
   - component: {fileID: 9031946688501890682}
   - component: {fileID: 3860619482121775832}
   - component: {fileID: 3358161678573335942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2418,7 +2540,7 @@ GameObject:
   - component: {fileID: 4697357505017747098}
   - component: {fileID: 3593699420111169451}
   - component: {fileID: 6259298170088824578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bARREL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2502,7 +2624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8290020958589529625}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrel Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2536,7 +2658,7 @@ GameObject:
   - component: {fileID: 7278784247201421654}
   - component: {fileID: 1828056298703933549}
   - component: {fileID: 6280687675959440240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2619,7 +2741,7 @@ GameObject:
   - component: {fileID: 7407724636857638580}
   - component: {fileID: 2176675277425797987}
   - component: {fileID: 6098983408352128902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2797,6 +2919,78 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &8903372756049679540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8092559354193290223}
+  - component: {fileID: 4353806089294491231}
+  - component: {fileID: 1855745267151687025}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8092559354193290223
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903372756049679540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3910069158544749342}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4353806089294491231
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903372756049679540}
+  m_CullTransparentMesh: 1
+--- !u!114 &1855745267151687025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903372756049679540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: f179d65d68a2f1942a19cd886488dbe0, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &8948363725789497286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +3002,7 @@ GameObject:
   - component: {fileID: 206850411724418292}
   - component: {fileID: 798272171545603164}
   - component: {fileID: 8516264384432129771}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
