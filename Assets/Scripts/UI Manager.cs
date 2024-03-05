@@ -11,12 +11,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private ControlCannon controlCannon;
     void Start() {
-        slider.minValue = controlCannon.MinimumForce;
-        slider.maxValue = controlCannon.MaximumForce;
+        slider.minValue = controlCannon.GetMinForce();
+        slider.maxValue = controlCannon.GetMaxForce();
     }
     // Update is called once per frame
     void Update()
     {
-        slider.value = controlCannon.FireForce > slider.minValue ?  controlCannon.FireForce : slider.minValue;
+        slider.value = controlCannon.GetFireStrength() > slider.minValue ?  controlCannon.GetFireStrength() : slider.minValue;
     }
 }
