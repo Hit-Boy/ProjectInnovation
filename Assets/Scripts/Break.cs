@@ -17,8 +17,8 @@ public class Break : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ball")
-        rb.isKinematic = false;
+        if(collision.relativeVelocity.magnitude > 5)
+            rb.isKinematic = false;
         if(collision.relativeVelocity.magnitude > 15)
         {
             foreach(Transform child in transform)
