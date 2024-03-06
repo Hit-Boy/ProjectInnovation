@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-
 public class Break : MonoBehaviour
 {
     Rigidbody rb;
@@ -17,9 +16,9 @@ public class Break : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.relativeVelocity.magnitude > 5)
+        if(collision.relativeVelocity.magnitude > 8)
             rb.isKinematic = false;
-        if(collision.relativeVelocity.magnitude > 15)
+        if(collision.relativeVelocity.magnitude > 20)
         {
             foreach(Transform child in transform)
                 if(!child.TryGetComponent<Rigidbody>(out Rigidbody rigid))

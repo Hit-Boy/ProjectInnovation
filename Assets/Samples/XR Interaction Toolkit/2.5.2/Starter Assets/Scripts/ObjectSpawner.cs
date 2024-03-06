@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.XR.Interaction.Toolkit.AR;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
-namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
-{
-    /// <summary>
-    /// Behavior with an API for spawning objects from a given set of prefabs.
-    /// </summary>
-    public class ObjectSpawner : MonoBehaviour {
-
+using UnityEngine;
+/// <summary>
+/// Behavior with an API for spawning objects from a given set of prefabs.
+/// </summary>
+public class ObjectSpawner : MonoBehaviour {
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
@@ -203,7 +200,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 }
             }
 
-            var objectIndex = isSpawnOptionRandomized ? Random.Range(0, m_ObjectPrefabs.Count) : m_SpawnOptionIndex;
+            var objectIndex = isSpawnOptionRandomized ? UnityEngine.Random.Range(0, m_ObjectPrefabs.Count) : m_SpawnOptionIndex;
             var newObject = Instantiate(m_ObjectPrefabs[objectIndex]);
             if (m_SpawnAsChildren)
                 newObject.transform.parent = transform;
@@ -218,7 +215,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             if (m_ApplyRandomAngleAtSpawn)
             {
-                var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
+                var randomRotation = UnityEngine.Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
                 newObject.transform.Rotate(Vector3.up, randomRotation);
             }
 
@@ -230,8 +227,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
-           //gameObject.GetComponent<ARPlaneManager>().enabled = false;
+           //gameObject.GetComponent<>().enabled = false;
             return true;
         }
     }
-}
