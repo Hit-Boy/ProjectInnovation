@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
 using UnityEngine;
 
-namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets {
+namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
+{
     /// <summary>
     /// Behavior with an API for spawning objects from a given set of prefabs.
     /// </summary>
     public class ObjectSpawner : MonoBehaviour {
         public bool isPlaced = false;
-
+        
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
