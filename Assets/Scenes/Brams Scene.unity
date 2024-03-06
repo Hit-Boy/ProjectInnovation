@@ -843,7 +843,7 @@ PrefabInstance:
     - target: {fileID: 105953699646423468, guid: 6b6971a9eb1fecd43b0b595da46fa391,
         type: 3}
       propertyPath: m_Name
-      value: VFX Cannon Blast 2
+      value: 'VFX Cannon Blast '
       objectReference: {fileID: 0}
     - target: {fileID: 1121444517386435734, guid: 6b6971a9eb1fecd43b0b595da46fa391,
         type: 3}
@@ -911,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 4444636168631155277, guid: 3c9fb76539d5d0d46acbed2f571202be,
         type: 3}
       propertyPath: m_Name
-      value: VFX Cannon Blast
+      value: VFX Cannon Blast old
       objectReference: {fileID: 0}
     - target: {fileID: 8128250611561016706, guid: 3c9fb76539d5d0d46acbed2f571202be,
         type: 3}
