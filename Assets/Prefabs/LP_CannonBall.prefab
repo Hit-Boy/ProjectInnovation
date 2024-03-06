@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1363471679931250498}
   - component: {fileID: 2685233695003277543}
   - component: {fileID: 191168343582215213}
+  - component: {fileID: 1876440644211951462}
   - component: {fileID: -7197779624663644191}
   - component: {fileID: 7884816976212903588}
   m_Layer: 0
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,6 +86,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1876440644211951462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848682465274310136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e011b974a6220254cb39569b60d17c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &-7197779624663644191
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,7 +106,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848682465274310136}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

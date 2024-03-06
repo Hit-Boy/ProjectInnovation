@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
-
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
     /// <summary>
@@ -13,7 +12,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
-
         /// <summary>
         /// The camera that objects will face when spawned. If not set, defaults to the <see cref="Camera.main"/> camera.
         /// </summary>
@@ -232,7 +230,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
-            gameObject.SetActive(false);
+           //gameObject.GetComponent<ARPlaneManager>().enabled = false;
             return true;
         }
     }
