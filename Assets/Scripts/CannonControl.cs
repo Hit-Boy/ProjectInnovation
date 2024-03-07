@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlCannon : MonoBehaviour
 {
@@ -11,18 +12,23 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _sensitivityX;
     [SerializeField] private float _sensitivityY;
-    [SerializeField] private float _forceSensitivity;
     [SerializeField] private GameObject _cannonBall;
     [SerializeField] private float _maximumForce;
     [SerializeField] private float _minimumForce;
+    [SerializeField] private TriggerParticles particles;
+    [SerializeField] private Slider slider;
+    
     private bool _leftTouch = false;
     private int leftTouchId;
-
     private bool _rightTouch = false;
     private int rightTouchId;
-
     private float _fireStrength;
-    // Update is called once per frame
+
+
+    private UIManager ui;
+    private void Start(){
+        ui = FindObjectOfType<UIManager>();
+    }
     void Update()
     {
         //Debug.Log(Display.main.systemWidth);
@@ -39,7 +45,7 @@ public class ControlCannon : MonoBehaviour
 
             if (touches[i].phase == TouchPhase.Began && !_rightTouch && touches[i].position.x > Display.main.systemWidth / 2)
             {
-                rightTouchId = i;
+                rightTouchId = touches[i].fingerId;
                 _rightTouch = true;
                 Debug.Log(_rightTouch);
             }
@@ -58,9 +64,11 @@ public class ControlCannon : MonoBehaviour
         {
             _rightTouch = false;
             Debug.Log(_rightTouch);
+            _fireStrength = slider.value;
             if (_fireStrength > _minimumForce)
                 FireCannon(_fireStrength);
             _fireStrength = 0;
+            slider.value = slider.minValue;
             //rightTouchIndex = -1;
         }
         if (_leftTouch)
@@ -74,28 +82,18 @@ public class ControlCannon : MonoBehaviour
                 _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, 200);
             _cannonCart.eulerAngles = new Vector3(_cannonCart.eulerAngles.x, leftTouch.deltaPosition.x * _sensitivityX + _cannonCart.eulerAngles.y, _cannonCart.eulerAngles.z);
         }
-
-        if (_rightTouch)
-        {
-            _fireStrength -= rightTouch.deltaPosition.y * _forceSensitivity;
-            if (_fireStrength < 0)
-                _fireStrength = 0;
-            else if (_fireStrength > _maximumForce)
-                _fireStrength = _maximumForce;
-            Debug.Log(_fireStrength);
-
-        }
     }
 
     private void FireCannon(float strength)
     {
         GameObject ball = Instantiate(_cannonBall, _firePoint.position, _firePoint.rotation);
-        Rigidbody rb;
-        if (ball.TryGetComponent<Rigidbody>(out rb))
+        if (ball.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             Debug.Log("Rigitbody detected");
             rb.velocity = _firePoint.right * strength;
         }
+        particles.TriggerEventParticles();
+        ui.OnShoot();
     }
     public float GetMaxForce()
     {

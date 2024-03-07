@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] TriggerParticles onBlockHit;
+    [SerializeField] TriggerParticles onGroundHit;
+    private void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "Ground")
+            onGroundHit.TriggerEventParticles();
+        else 
+            onBlockHit.TriggerEventParticles();
+        transform.DetachChildren();
+        Invoke("Delete",1);
+        Destroy(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Delete(){
+        Destroy(onBlockHit.gameObject);
+        Destroy(onGroundHit.gameObject);
     }
 }
