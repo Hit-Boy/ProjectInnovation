@@ -12,7 +12,12 @@ public class CannonBall : MonoBehaviour
             onGroundHit.TriggerEventParticles();
         else 
             onBlockHit.TriggerEventParticles();
+        transform.DetachChildren();
+        Invoke("Delete",1);
         Destroy(this);
-
+    }
+        private void Delete(){
+        Destroy(onBlockHit.gameObject);
+        Destroy(onGroundHit.gameObject);
     }
 }

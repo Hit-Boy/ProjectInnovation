@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class TriggerParticles : MonoBehaviour
@@ -10,6 +11,7 @@ public class TriggerParticles : MonoBehaviour
     }
     public void TriggerEventParticles() {
         paticles.ForEach(x=>x.Play());
+
     }
     
 }
