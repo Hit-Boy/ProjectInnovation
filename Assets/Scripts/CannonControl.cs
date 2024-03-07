@@ -12,7 +12,6 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _sensitivityX;
     [SerializeField] private float _sensitivityY;
-    [SerializeField] private float _forceSensitivity;
     [SerializeField] private GameObject _cannonBall;
     [SerializeField] private float _maximumForce;
     [SerializeField] private float _minimumForce;
