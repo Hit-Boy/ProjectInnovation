@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/ArtJens 1.unity.meta~main
 guid: 14859f873cb757a408f35b894c116995
+========
+guid: 8f8b527c652074b408d68dd4ebff1bad
+>>>>>>>> 6d3f1be765532c6981f72966ba399a98af6e78fc:Assets/Scenes/TerrainScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
