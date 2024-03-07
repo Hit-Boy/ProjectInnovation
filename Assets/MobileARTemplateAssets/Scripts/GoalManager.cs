@@ -60,12 +60,7 @@ public class GoalManager : MonoBehaviour
         /// <summary>
         /// Show movement hints
         /// </summary>
-        Hints,
-
-        /// <summary>
-        /// Show scale and rotate hints
-        /// </summary>
-        Scale
+        MoveAndRotate,
     }
 
     /// <summary>
@@ -182,7 +177,7 @@ public class GoalManager : MonoBehaviour
 
     void Update()
     {
-        if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame && !m_AllGoalsFinished && (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces || m_CurrentGoal.CurrentGoal == OnboardingGoals.Hints || m_CurrentGoal.CurrentGoal == OnboardingGoals.Scale))
+        if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame && !m_AllGoalsFinished && (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces || m_CurrentGoal.CurrentGoal == OnboardingGoals.MoveAndRotate))
         {
             if (m_CurrentCoroutine != null)
             {
@@ -221,13 +216,9 @@ public class GoalManager : MonoBehaviour
         {
             m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(5f));
         }
-        else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.Hints)
+        else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.MoveAndRotate)
         {
             m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(6f));
-        }
-        else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.Scale)
-        {
-            m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(8f));
         }
         else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
         {
@@ -291,15 +282,12 @@ public class GoalManager : MonoBehaviour
         int startingStep = m_AllGoalsFinished ? 1 : 0;
 
         var tapSurfaceGoal = new Goal(OnboardingGoals.TapSurface);
-        var translateHintsGoal = new Goal(OnboardingGoals.Hints);
-        var scaleHintsGoal = new Goal(OnboardingGoals.Scale);
-        var rotateHintsGoal = new Goal(OnboardingGoals.Hints);
+        var translateHintsGoal = new Goal(OnboardingGoals.MoveAndRotate);
+
 
         m_OnboardingGoals.Enqueue(tapSurfaceGoal);
         m_OnboardingGoals.Enqueue(translateHintsGoal);
-        m_OnboardingGoals.Enqueue(scaleHintsGoal);
-        m_OnboardingGoals.Enqueue(rotateHintsGoal);
-
+        
         m_CurrentGoal = m_OnboardingGoals.Dequeue();
         m_AllGoalsFinished = false;
         m_CurrentGoalIndex = startingStep;

@@ -5864,12 +5864,12 @@ PrefabInstance:
     - target: {fileID: 1501377524210474460, guid: e574c55c37f47f04f96acacf880b370d,
         type: 3}
       propertyPath: _maximumForce
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1501377524210474460, guid: e574c55c37f47f04f96acacf880b370d,
         type: 3}
       propertyPath: _minimumForce
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1501377524210474460, guid: e574c55c37f47f04f96acacf880b370d,
         type: 3}
