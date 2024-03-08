@@ -239,11 +239,11 @@ public class ARTemplateMenuManager : MonoBehaviour
     {
         // Auto turn on/off debug menu. We want it initially active so it calls into 'Start', which will
         // allow us to move the menu properties later if the debug menu is turned on.
-        m_DebugMenu.gameObject.SetActive(true);
-        m_InitializingDebugMenu = true;
+        //m_DebugMenu.gameObject.SetActive(true);
+        //m_InitializingDebugMenu = true;
 
-        InitializeDebugMenuOffsets();
-        HideMenu();
+        //InitializeDebugMenuOffsets();
+        //HideMenu();
         m_PlaneManager.planePrefab = m_DebugPlane;
     }
 
@@ -266,7 +266,7 @@ public class ARTemplateMenuManager : MonoBehaviour
             }
             else
             {
-                m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
+                //m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
             }
 
             m_IsPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
@@ -274,8 +274,8 @@ public class ARTemplateMenuManager : MonoBehaviour
         else
         {
             m_IsPointerOverUI = false;
-            m_CreateButton.gameObject.SetActive(true);
-            m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
+            //m_CreateButton.gameObject.SetActive(true);
+            //m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
         }
 
         if (!m_IsPointerOverUI && m_ShowOptionsModal)
