@@ -171,6 +171,8 @@ public class GoalManager : MonoBehaviour
         get => m_PlaneManager;
         set => m_PlaneManager = value;
     }
+
+    public GameObject cannonBallPrefab;
     
     /// <summary>
     /// The AR Template Menu Manager object to enable once the greeting prompt is dismissed.
@@ -263,8 +265,19 @@ public class GoalManager : MonoBehaviour
 
     public void FinishOnboarding() {
         CompleteGoal();
+        
         m_ObjectSpawner.gameObject.SetActive(false);
-        GameObject.FindWithTag("Level").transform.GetComponent<XRGrabInteractable>().enabled = false;
+        
+        GameObject level = GameObject.FindWithTag("Level");
+        float ratio = level.transform.localScale.x / 0.01f;
+        
+        level.transform.GetComponent<XRGrabInteractable>().enabled = false;
+        level.transform.GetComponentInChildren<ControlCannon>()._maximumForce *= ratio;
+        level.transform.GetComponentInChildren<ControlCannon>()._minimumForce *= ratio;
+        Physics.gravity /= ratio;
+        
+        cannonBallPrefab.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f) * ratio;
+
     }
 
     public void RestartCoaching() {

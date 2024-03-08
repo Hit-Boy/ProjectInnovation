@@ -14,7 +14,7 @@ public class Break : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         ui = FindObjectOfType<UIManager>();
-        source = FindObjectOfType<AudioSource>();
+        source = GetComponent<AudioSource>();
     }
     void Update(){
     }
@@ -24,14 +24,21 @@ public class Break : MonoBehaviour
             rb.isKinematic = false;
             if (!_broken) {
                 ui.OnBreak();
-                source.Play();
+                Debug.Log(source.isPlaying);
+                if (!source.isPlaying) {
+                    source.Play();
+                }
+
                 _broken = true;
             }
         }
         if(collision.relativeVelocity.magnitude > _breakForce) {
-            foreach(Transform child in transform)
-                if(!child.TryGetComponent<Rigidbody>(out Rigidbody rigid))
-                    child.AddComponent<Rigidbody>();
+            for (int i = 0; i < transform.childCount; i++) {
+                if (!transform.GetChild(i).TryGetComponent<Rigidbody>(out Rigidbody rigid) && i % 4 == 0) {
+                    transform.GetChild(i).AddComponent<Rigidbody>();
+                }
+            }
+
             Destroy(this);
         }
     }

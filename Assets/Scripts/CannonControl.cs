@@ -13,8 +13,8 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private float _sensitivityX;
     [SerializeField] private float _sensitivityY;
     [SerializeField] private GameObject _cannonBall;
-    [SerializeField] private float _maximumForce;
-    [SerializeField] private float _minimumForce;
+    [SerializeField] public float _maximumForce;
+    [SerializeField] public float _minimumForce;
     [SerializeField] private TriggerParticles particles;
     [SerializeField] private Slider slider;
     [SerializeField] private AudioClip[] clips;
@@ -93,9 +93,9 @@ public class ControlCannon : MonoBehaviour
         GameObject ball = Instantiate(_cannonBall, _firePoint.position, _firePoint.rotation);
 
         if(strength < _maximumForce/2)
-        source.clip = clips[0];
+            source.clip = clips[0];
         else if(strength >= _maximumForce/2)
-        source.clip = clips[1];
+            source.clip = clips[1];
         source.Play();
         if (ball.TryGetComponent<Rigidbody>(out Rigidbody rb)) {
             Debug.Log("Rigitbody detected");

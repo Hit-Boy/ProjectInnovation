@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,7 +10,9 @@ public class CannonBall : MonoBehaviour
     [SerializeField] private TriggerParticles onGroundHit;
 
     private bool onImpact = false;
-    void Start(){
+    private float startTime;
+    void OnEnable() {
+        startTime = Time.time;
     }
     private void OnCollisionEnter(Collision collision) {
         if(!onImpact){
@@ -27,6 +30,11 @@ public class CannonBall : MonoBehaviour
         private void Delete(){
         Destroy(onBlockHit.gameObject);
         Destroy(onGroundHit.gameObject);
-        Destroy(this);
-    }
+        }
+
+        private void FixedUpdate() {
+            if (Time.time - startTime >= 10f) {
+                Destroy(gameObject);
+            }
+        }
 }

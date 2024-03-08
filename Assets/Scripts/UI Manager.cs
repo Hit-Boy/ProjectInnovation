@@ -52,13 +52,13 @@ public class UIManager : MonoBehaviour
 
     void Star1(){
         image.sprite = sprites[1];
-        if(shotsFired <= 20)
+        if(shotsFired <= 30)
             Invoke("Star2",0.3f);
     }
 
     void Star2(){
         image.sprite = sprites[2];
-        if(shotsFired <= 10)
+        if(shotsFired <= 20)
             Invoke("Star3",0.3f);
     }
 
