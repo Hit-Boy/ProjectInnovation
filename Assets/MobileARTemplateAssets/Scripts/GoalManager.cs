@@ -317,7 +317,10 @@ public class GoalManager : MonoBehaviour
 
         var tapSurfaceGoal = new Goal(OnboardingGoals.TapSurface);
         var acceptGoal = new Goal(OnboardingGoals.AcceptRotationAndPosition);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c1b1e4db64d617a6eb59c41c18486d10d8a15037
 
         m_OnboardingGoals.Enqueue(tapSurfaceGoal);
         m_OnboardingGoals.Enqueue(acceptGoal);
