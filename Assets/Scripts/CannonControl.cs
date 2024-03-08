@@ -46,7 +46,7 @@ public class ControlCannon : MonoBehaviour
                 source.Play();
             }
 
-            if (touches[i].phase == TouchPhase.Began && !_rightTouch && touches[i].position.x > Display.main.systemWidth / 2)
+            if (touches[i].phase == TouchPhase.Began && !_rightTouch && touches[i].position.x > Display.main.systemWidth / 1.1f)
             {
                 rightTouchId = touches[i].fingerId;
                 _rightTouch = true;
