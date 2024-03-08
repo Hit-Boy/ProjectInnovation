@@ -8,10 +8,8 @@ public class CannonBall : MonoBehaviour
     [SerializeField] private TriggerParticles onBlockHit;
     [SerializeField] private TriggerParticles onGroundHit;
 
-    private AudioSource source;
     private bool onImpact = false;
     void Start(){
-        source = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision) {
         if(!onImpact){
@@ -22,7 +20,6 @@ public class CannonBall : MonoBehaviour
             transform.DetachChildren();
             onBlockHit.transform.eulerAngles = Vector3.zero;
             onGroundHit.transform.eulerAngles = Vector3.zero;
-            source.Play();
             Invoke("Delete",1);
             onImpact = true;
         }
@@ -30,7 +27,6 @@ public class CannonBall : MonoBehaviour
         private void Delete(){
         Destroy(onBlockHit.gameObject);
         Destroy(onGroundHit.gameObject);
-        Destroy(source);
         Destroy(this);
     }
 }

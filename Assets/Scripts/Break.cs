@@ -8,11 +8,13 @@ public class Break : MonoBehaviour
     private Rigidbody rb;
     private UIManager ui;
     private bool _broken = false;
+    private AudioSource source;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         ui = FindObjectOfType<UIManager>();
+        source = FindObjectOfType<AudioSource>();
     }
     void Update(){
     }
@@ -22,6 +24,7 @@ public class Break : MonoBehaviour
             rb.isKinematic = false;
             if (!_broken) {
                 ui.OnBreak();
+                source.Play();
                 _broken = true;
             }
         }

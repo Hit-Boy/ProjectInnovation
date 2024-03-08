@@ -901,7 +901,11 @@ MonoBehaviour:
   Shots: {fileID: 8283543863211987063}
   slider: {fileID: 7310735828028016298}
   image: {fileID: 80914490588281394}
-  sprites: []
+  sprites:
+  - {fileID: 21300000, guid: f9b284c446f75a04bb3e122811c88d6a, type: 3}
+  - {fileID: 21300000, guid: fe1dc5a6ec523b744af7f1362057f042, type: 3}
+  - {fileID: 21300000, guid: 942d0c7fec352534f8b95444a43efa3b, type: 3}
+  - {fileID: 21300000, guid: c568abf1adc8e4b45907d98481cf3741, type: 3}
 --- !u!82 &2666030492543692488
 AudioSource:
   m_ObjectHideFlags: 0
