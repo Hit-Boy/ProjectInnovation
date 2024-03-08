@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.State;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 /// <summary>
@@ -58,14 +61,9 @@ public class GoalManager : MonoBehaviour
         TapSurface,
 
         /// <summary>
-        /// Show movement hints
+        /// Accept Rotation and Position of the level
         /// </summary>
-        Hints,
-
-        /// <summary>
-        /// Show scale and rotate hints
-        /// </summary>
-        Scale
+        AcceptRotationAndPosition,
     }
 
     /// <summary>
@@ -162,6 +160,18 @@ public class GoalManager : MonoBehaviour
     [SerializeField]
     ARTemplateMenuManager m_MenuManager;
 
+    [Tooltip("The AR plane manager that is used to get plane changes")]
+    [SerializeField] private ARPlaneManager m_PlaneManager;
+    
+    /// <summary>
+    /// The AR plane manager that is used to get plane changes.
+    /// </summary>
+    public ARPlaneManager planeManager
+    {
+        get => m_PlaneManager;
+        set => m_PlaneManager = value;
+    }
+    
     /// <summary>
     /// The AR Template Menu Manager object to enable once the greeting prompt is dismissed.
     /// </summary>
@@ -182,14 +192,10 @@ public class GoalManager : MonoBehaviour
 
     void Update()
     {
-        if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame && !m_AllGoalsFinished && (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces || m_CurrentGoal.CurrentGoal == OnboardingGoals.Hints || m_CurrentGoal.CurrentGoal == OnboardingGoals.Scale))
-        {
-            if (m_CurrentCoroutine != null)
-            {
-                StopCoroutine(m_CurrentCoroutine);
-            }
-            CompleteGoal();
-        }
+        // if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame && !m_AllGoalsFinished && (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces || m_CurrentGoal.CurrentGoal == OnboardingGoals.AcceptRotationAndPosition))
+        // {
+        //     CompleteGoal();
+        // }
     }
 
     void CompleteGoal()
@@ -197,6 +203,9 @@ public class GoalManager : MonoBehaviour
         if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
             m_ObjectSpawner.objectSpawned -= OnObjectSpawned;
 
+        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces)
+            m_PlaneManager.planesChanged -= OnPlanesChanged;
+        
         m_CurrentGoal.Completed = true;
         m_CurrentGoalIndex++;
         if (m_OnboardingGoals.Count > 0)
@@ -217,17 +226,8 @@ public class GoalManager : MonoBehaviour
 
     void PreprocessGoal()
     {
-        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces)
-        {
-            m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(5f));
-        }
-        else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.Hints)
-        {
-            m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(6f));
-        }
-        else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.Scale)
-        {
-            m_CurrentCoroutine = StartCoroutine(WaitUntilNextCard(8f));
+        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces) {
+            m_PlaneManager.planesChanged += OnPlanesChanged;
         }
         else if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
         {
@@ -261,6 +261,31 @@ public class GoalManager : MonoBehaviour
         CompleteGoal();
     }
 
+    public void FinishOnboarding() {
+        CompleteGoal();
+        m_ObjectSpawner.gameObject.SetActive(false);
+        GameObject.FindWithTag("Level").transform.GetComponent<XRGrabInteractable>().enabled = false;
+    }
+
+    public void RestartCoaching() {
+        GameObject level = GameObject.FindWithTag("Level");
+        
+        if (level == null) {
+            return;
+        }
+        
+        Destroy(level);
+        m_ObjectSpawner.isPlaced = false;
+        CompleteGoal();
+        StartCoaching();
+    }
+
+    void OnPlanesChanged(ARPlanesChangedEventArgs eventArgs) {
+        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.FindSurfaces) {
+            CompleteGoal();
+        }
+    }
+    
     void OnObjectSpawned(GameObject spawnedObject)
     {
         m_SurfacesTapped++;
@@ -291,23 +316,17 @@ public class GoalManager : MonoBehaviour
         int startingStep = m_AllGoalsFinished ? 1 : 0;
 
         var tapSurfaceGoal = new Goal(OnboardingGoals.TapSurface);
-        var translateHintsGoal = new Goal(OnboardingGoals.Hints);
-        var scaleHintsGoal = new Goal(OnboardingGoals.Scale);
-        var rotateHintsGoal = new Goal(OnboardingGoals.Hints);
+        var acceptGoal = new Goal(OnboardingGoals.AcceptRotationAndPosition);
 
         m_OnboardingGoals.Enqueue(tapSurfaceGoal);
-        m_OnboardingGoals.Enqueue(translateHintsGoal);
-        m_OnboardingGoals.Enqueue(scaleHintsGoal);
-        m_OnboardingGoals.Enqueue(rotateHintsGoal);
-
+        m_OnboardingGoals.Enqueue(acceptGoal);
+        
         m_CurrentGoal = m_OnboardingGoals.Dequeue();
         m_AllGoalsFinished = false;
         m_CurrentGoalIndex = startingStep;
 
         m_GreetingPrompt.SetActive(false);
-        m_OptionsButton.SetActive(true);
-        m_CreateButton.SetActive(true);
-        m_MenuManager.enabled = true;
+        //m_MenuManager.enabled = true;
 
         for (int i = startingStep; i < m_StepList.Count; i++)
         {
