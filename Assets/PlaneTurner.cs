@@ -21,5 +21,8 @@ public class PlaneTurner : MonoBehaviour {
         if (objectSpawner.isPlaced == true) {
             setPlaneManager(false);
         }
+        else {
+            setPlaneManager(true);
+        }
     }
 }

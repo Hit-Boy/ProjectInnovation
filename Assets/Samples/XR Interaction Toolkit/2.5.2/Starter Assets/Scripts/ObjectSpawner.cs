@@ -179,6 +179,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// </remarks>
         /// <seealso cref="objectSpawned"/>
         public bool TrySpawnObject(Vector3 spawnPoint, Vector3 spawnNormal) {
+            if (isPlaced) {
+                return false;
+            }
+
             if (m_OnlySpawnInView) {
                 var inViewMin = m_ViewportPeriphery;
                 var inViewMax = 1f - m_ViewportPeriphery;
@@ -217,7 +221,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             isPlaced = true;
             return true;
         }
