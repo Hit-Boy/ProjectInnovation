@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Break : MonoBehaviour
 {
-    private float _breakForce = 1.0f;
+    private float _breakForce = 0.8f;
     private Rigidbody rb;
     private UIManager ui;
     private bool _broken = false;
@@ -18,13 +18,14 @@ public class Break : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.relativeVelocity.magnitude > _breakForce/3)
+        if (collision.relativeVelocity.magnitude > _breakForce / 3) {
             rb.isKinematic = false;
-        if(collision.relativeVelocity.magnitude > _breakForce) {
-            if(!_broken) {
+            if (!_broken) {
                 ui.OnBreak();
                 _broken = true;
             }
+        }
+        if(collision.relativeVelocity.magnitude > _breakForce) {
             foreach(Transform child in transform)
                 if(!child.TryGetComponent<Rigidbody>(out Rigidbody rigid))
                     child.AddComponent<Rigidbody>();

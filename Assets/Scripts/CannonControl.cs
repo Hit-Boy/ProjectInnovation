@@ -17,17 +17,18 @@ public class ControlCannon : MonoBehaviour
     [SerializeField] private float _minimumForce;
     [SerializeField] private TriggerParticles particles;
     [SerializeField] private Slider slider;
-    
+    [SerializeField] private AudioClip[] clips;
     private bool _leftTouch = false;
     private int leftTouchId;
     private bool _rightTouch = false;
     private int rightTouchId;
     private float _fireStrength;
 
-
+    private AudioSource source;
     private UIManager ui;
     private void Start(){
         ui = FindObjectOfType<UIManager>();
+        source = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -41,6 +42,8 @@ public class ControlCannon : MonoBehaviour
                 leftTouchId = touches[i].fingerId;
                 _leftTouch = true;
                 Debug.Log(_leftTouch);
+                source.clip = clips[2];
+                source.Play();
             }
 
             if (touches[i].phase == TouchPhase.Began && !_rightTouch && touches[i].position.x > Display.main.systemWidth / 2)
@@ -48,6 +51,8 @@ public class ControlCannon : MonoBehaviour
                 rightTouchId = touches[i].fingerId;
                 _rightTouch = true;
                 Debug.Log(_rightTouch);
+                source.clip = clips[3];
+                source.Play();
             }
         }
         Touch leftTouch = Array.Find(touches, x => x.fingerId == leftTouchId);
@@ -73,7 +78,6 @@ public class ControlCannon : MonoBehaviour
         }
         if (_leftTouch)
         {
-            Debug.Log(_cannonBarrel.eulerAngles.z);
             if (_cannonBarrel.eulerAngles.z >= 90 && _cannonBarrel.eulerAngles.z <= 200)
                 _cannonBarrel.eulerAngles = new Vector3(_cannonBarrel.eulerAngles.x, _cannonBarrel.eulerAngles.y, -leftTouch.deltaPosition.y * _sensitivityY + _cannonBarrel.eulerAngles.z);
             if (_cannonBarrel.eulerAngles.z < 90)
@@ -87,8 +91,13 @@ public class ControlCannon : MonoBehaviour
     private void FireCannon(float strength)
     {
         GameObject ball = Instantiate(_cannonBall, _firePoint.position, _firePoint.rotation);
-        if (ball.TryGetComponent<Rigidbody>(out Rigidbody rb))
-        {
+
+        if(strength < _maximumForce/2)
+        source.clip = clips[0];
+        else if(strength >= _maximumForce/2)
+        source.clip = clips[1];
+        source.Play();
+        if (ball.TryGetComponent<Rigidbody>(out Rigidbody rb)) {
             Debug.Log("Rigitbody detected");
             rb.velocity = _firePoint.right * strength;
         }

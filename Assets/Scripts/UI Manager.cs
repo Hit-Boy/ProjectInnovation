@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
         slider.minValue = 0;
         slider.maxValue = controlCannon.GetMaxForce();
         blocksCount = FindObjectsOfType<Break>().Length;
+        
         currentScore = 0;
     }
     public void OnBreak() {
